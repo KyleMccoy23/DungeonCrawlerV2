@@ -8,6 +8,9 @@ class Item:
         self.name = name
         self.value = value
         self.type = type
+    
+    def __str__(self) -> str:
+        return f'Name:{self.name}\nType:{self.type}\nValue:{self.value}'
 
 class Weapon(Item):
     def __init__(self,
