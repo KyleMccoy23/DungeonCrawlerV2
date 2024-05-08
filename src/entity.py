@@ -1,5 +1,4 @@
-from items import fists
-from item import Item
+from item import Item, fists
 
 class Entity:
     """
