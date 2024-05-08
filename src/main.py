@@ -1,7 +1,9 @@
 import config
+from engine import Engine
 
 def main() -> None:
-    print("hello world!!")
+    engine = Engine()
+    engine.start()
 
 
 if __name__ == "__main__":
