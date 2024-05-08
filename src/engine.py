@@ -1,6 +1,7 @@
 
 from player import Player
-from helperFuncs import clear
+from helperFuncs import clear, bannerLines, gameHelp
+from playerManager import PlayerManager
 
 
 class Engine:
@@ -26,11 +27,66 @@ class Engine:
         # test
         self.player = Player() #⁡⁢⁣⁢ TO REMOVE⁡
 
+        self.playerManager = PlayerManager()
+
+        self.menu = False
+        self.playing = False
+        self.running = False
+        
+
     def start(self) -> None:
         """
         Starts the game.
 
         """
-        print("The game has started", end=" >>")
+        print("The game has started \nPress 'enter' or 'return' to start", end=" >>")
         input()
-        print(self.player)
+        
+        self.running = True
+        self.menu = True
+
+        self.run()
+
+
+    def run(self) -> None:
+        
+        while self.running:
+
+            while self.menu:
+                self.mainMenu()
+
+            while self.playing:
+                self.play()
+
+    def mainMenu(self) -> None:
+        clear()
+
+        bannerLines()
+        print('1. New Game')
+        print('2. Load Game')
+        print('3. Help')
+        print('4. Quit')
+        bannerLines()
+
+        choice = input('# ')
+
+        match(choice):
+            case '1':
+                self.playerManager.newPlayer()
+                self.menu = False
+                self.playing = True
+
+            case '2':
+                self.playerManager.loadPlayer()
+                self.menu = False
+                self.playing = True
+
+            case '3':
+                gameHelp()
+                self.menu = True
+            
+            case '4':
+                exit(0)
+
+    def play(self) -> None:
+        pass
