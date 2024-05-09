@@ -5,18 +5,6 @@ from playerManager import PlayerManager
 
 
 class Engine:
-    """
-    Represents the game engine responsible for managing game logic and interactions.
-
-    This class initializes the game and provides methods to start and control the game flow.
-
-    Attributes:
-        None
-
-    Methods:
-        __init__: Initializes the game engine.
-        start: Starts the game by prompting the user to press Enter and then printing the current state of the player character.
-    """
 
     def __init__(self) -> None:
         """

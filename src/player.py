@@ -3,27 +3,7 @@ from entity import Entity
 
 
 class Player(Entity):
-    """
-    Represents a player character in the game world.
 
-    This class inherits from the Entity class and extends its functionality to represent player-specific attributes and behavior.
-
-    Attributes:
-        Inherits all attributes from the Entity class:
-            defaultWeapon: The default weapon of the player.
-            hand: The currently equipped weapon in the player's hand.
-            info: A dictionary containing information about the player, such as name, class, race, and status.
-            stats: A dictionary containing the statistics of the player, such as Strength, Dexterity, etc.
-            inventory: A dictionary mapping Item instances to their quantities in the player's inventory.
-
-    Methods:
-        Inherits all methods from the Entity class:
-            __init__: Initializes the player with default values.
-            __str__: Returns a string representation of the player.
-            getInfo(info: str) -> str: Retrieves specific information about the player.
-            getItem(itemName: str) -> int: Retrieves the quantity of a specific item in the player's inventory.
-            getStat(stat: str) -> int: Retrieves the value of a specific statistic for the player.
-    """
     def __init__(self) -> None:
         super().__init__()
     
@@ -31,7 +11,7 @@ class Player(Entity):
         self.manaBar = None
         self.staminaBar = None
 
-        self.bars = []
+        self.bars:list = []
 
     def __str__(self) -> str:
         return super().__str__() + f"\nStats:\n{self.stats}"
@@ -50,3 +30,8 @@ class Player(Entity):
     
     def setStat(self, stat:str, value:int) -> None:
         self.stats[stat] = value
+
+    def attack(self, target: Entity) -> int:
+        target.info['health'] -= self.hand.damage
+        target.info['health'] = max(target.info.get('health'), 0)
+        target.healthBar.update()
