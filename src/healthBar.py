@@ -1,6 +1,8 @@
 
 import os
 
+from entity import Entity
+
 os.system("")
 
 class Bar:
@@ -50,7 +52,7 @@ class Bar:
         
 class healthBar(Bar):
     def __init__(self, 
-                 entity, 
+                 entity:Entity, 
                  length: int = 20, 
                  is_colored: bool = True, 
                  color: str = "green2") -> None:
@@ -62,12 +64,12 @@ class healthBar(Bar):
     def barTitle(self) -> None:
         print(f"{self.entity.identity.get('name')}'s HEALTH: {self.entity.status.get('health')}/{self.entity.status.get('maxHealth')}")
 
-    def update(self):
+    def update(self) -> None:
         self.current_value = self.entity.status.get('health')
 
 class manaBar(Bar):
     def __init__(self, 
-                 entity, 
+                 entity:Entity, 
                  length: int = 20, 
                  is_colored: bool = True, 
                  color: str = "blue2") -> None:
@@ -79,12 +81,12 @@ class manaBar(Bar):
     def barTitle(self) -> None:
         print(f"{self.entity.identity.get('name')}'s MANA: {self.entity.status.get('mana')}/{self.entity.status.get('maxMana')}")
 
-    def update(self):
+    def update(self) -> None:
         self.current_value = self.entity.status.get('mana')
 
 class staminaBar(Bar):
     def __init__(self, 
-                 entity, 
+                 entity:Entity, 
                  length: int = 20, 
                  is_colored: bool = True, 
                  color: str = "green") -> None:
@@ -96,5 +98,5 @@ class staminaBar(Bar):
     def barTitle(self) -> None:
         print(f"{self.entity.info.get('name')}'s STAMINA: {self.entity.status.get('stamina')}/{self.entity.status.get('maxStamina')}")
     
-    def update(self):
+    def update(self) -> None:
         self.current_value = self.entity.status.get('stamina')

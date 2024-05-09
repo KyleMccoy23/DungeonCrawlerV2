@@ -10,14 +10,11 @@ class Player(Entity):
         self.healthBar = None
         self.manaBar = None
         self.staminaBar = None
-
-        self.bars:list = []
-
+        
     def __str__(self) -> str:
         return super().__str__() + f"\nStats:\n{self.stats}"
 
     def setBars(self, bars:list) -> None:
-        self.bars = bars
         self.healthBar = bars[0]
         self.manaBar = bars[1]
         self.staminaBar = bars[2]
@@ -35,3 +32,7 @@ class Player(Entity):
         target.info['health'] -= self.hand.damage
         target.info['health'] = max(target.info.get('health'), 0)
         target.healthBar.update()
+
+    def unequip(self):
+        self.hand = self.defaultWeapon
+    

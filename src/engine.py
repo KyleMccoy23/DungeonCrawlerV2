@@ -13,8 +13,7 @@ class Engine:
         This method sets up the initial state of the game engine.
         """
         # test
-        self.player = Player() #⁡⁢⁣⁢ TO REMOVE⁡
-
+        self.player = Player() #! to remove
         self.playerManager = PlayerManager()
 
         self.menu = False
@@ -60,7 +59,7 @@ class Engine:
 
         match(choice):
             case '1':
-                self.playerManager.newPlayer()
+                self.player = self.playerManager.newPlayer()
                 self.menu = False
                 self.playing = True
 
