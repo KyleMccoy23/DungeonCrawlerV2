@@ -32,8 +32,6 @@ class Engine:
         self.running = True
         self.menu = True
 
-        self.run()
-
 
     def run(self) -> None:
         
