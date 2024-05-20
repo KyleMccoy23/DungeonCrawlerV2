@@ -1,4 +1,5 @@
 
+# from enemy import Enemy
 from entity import Entity
 
 
@@ -6,10 +7,6 @@ class Player(Entity):
 
     def __init__(self) -> None:
         super().__init__()
-    
-        self.healthBar = None
-        self.manaBar = None
-        self.staminaBar = None
         
     def __str__(self) -> str:
         return super().__str__() + f"\nStats:\n{self.stats}"
@@ -28,9 +25,9 @@ class Player(Entity):
     def setStat(self, stat:str, value:int) -> None:
         self.stats[stat] = value
 
-    def attack(self, target: Entity) -> int:
-        target.info['health'] -= self.hand.damage
-        target.info['health'] = max(target.info.get('health'), 0)
+    def attack(self, target: Entity) -> None:
+        target.status['health'] -= self.hand.damage
+        target.status['health'] = max(target.status.get('health',0), 0)
         target.healthBar.update()
 
     def unequip(self):

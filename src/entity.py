@@ -1,3 +1,4 @@
+from healthBar import healthBar, manaBar, staminaBar
 from item import Item, fists
 
 class Entity:
@@ -23,6 +24,10 @@ class Entity:
 
         self.defaultWeapon = fists
         self.hand = self.defaultWeapon
+
+        # self.healthBar = healthBar(self, color='green2')
+        # self.manaBar = manaBar(self, color="blue2")
+        # self.staminaBar = staminaBar(self, color='green')
         
         self.info:dict[str, str] = {
             'name':'',
@@ -62,7 +67,7 @@ class Entity:
         Returns:
             A string containing basic information about the entity and the item currently equipped in its hand.
         """
-        return f"Name: {self.getInfo('name')}\nClass: {self.getInfo('class')}\nRace: {self.getInfo('race')}\nHand:\n[{self.hand}]"
+        return f"Name: {self.getInfo('name')}\nClass: {self.getInfo('class')}\nRace: {self.getInfo('race')}\nHand:{self.hand.name}"
 
     def getStatus(self, status:str) -> int:
         """

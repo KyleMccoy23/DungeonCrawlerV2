@@ -1,4 +1,5 @@
 
+from error import GameError
 from player import Player
 from helperFuncs import clear, bannerLines, gameHelp
 from playerManager import PlayerManager
@@ -74,4 +75,4 @@ class Engine:
                 exit(0)
 
     def play(self) -> None:
-        pass
+        raise GameError("play loop no implemented")
