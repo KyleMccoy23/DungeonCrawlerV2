@@ -75,4 +75,5 @@ class Engine:
                 exit(0)
 
     def play(self) -> None:
+        print(self.player)
         raise GameError("play loop no implemented")

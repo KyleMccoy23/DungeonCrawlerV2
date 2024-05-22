@@ -10,6 +10,10 @@ class GameError(Exception):
 
         self.logError()
 
+        print("An error has occurred")
+
+        exit(1)
+
     def logError(self) -> None:
         with open(f'{self.path}\\{self.filename}.txt', 'a') as file:
             file.write(f"{self.__class__.__name__}: {self.message}\n")

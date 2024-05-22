@@ -38,7 +38,6 @@ class PlayerManager:
     def __init__(self) -> None:
         pass
 
-    
     def newPlayer(self) -> Player:
 
         self.player = Player()
@@ -61,12 +60,35 @@ class PlayerManager:
         self.player.setInfo('race', self.chooseRace())
         
         clear()
-        bannerLines()  
-        print(self.player)
+
+        self.setStats()
 
         bannerLines()
     
         return self.player
+    
+    def setStats(self) -> None:
+        maxStats = 14
+        for s in self.player.stats:
+            tempStats = maxStats
+            bannerLines()
+            print("How many point do you want to put into your stats (Max is 10)")
+            print(f"Remaining Stat Points: {maxStats}")
+            for ss in self.player.stats:
+                if self.player.stats[ss] > 0:
+                    print(f'{ss} : {self.player.stats.get(ss)}')
+            bannerLines()
+            statPoints = input(f"{s} : ")
+            if statPoints == '': statPoints = 1
+            elif statPoints == 'q': exit(0)
+            else: statPoints = int(statPoints)
+            tempStats -= statPoints
+            if tempStats < 0:
+                self.player.setStat(s, maxStats)
+                return
+            self.player.setStat(s, statPoints)
+            maxStats = tempStats
+            clear()
 
     def chooseClass(self) -> str:
         while True:
@@ -94,3 +116,6 @@ class PlayerManager:
 
     def loadPlayer(self) -> Player:
         raise GameError('No Player Loading Defined')
+
+    def savePlayer(self) -> None:
+        raise GameError("player saving not implemented")

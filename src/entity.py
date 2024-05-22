@@ -24,10 +24,6 @@ class Entity:
 
         self.defaultWeapon = fists
         self.hand = self.defaultWeapon
-
-        # self.healthBar = healthBar(self, color='green2')
-        # self.manaBar = manaBar(self, color="blue2")
-        # self.staminaBar = staminaBar(self, color='green')
         
         self.info:dict[str, str] = {
             'name':'',
@@ -48,17 +44,23 @@ class Entity:
         }
 
         self.stats: dict[str, int] = {
-            'Str':0,
-            'Dex':0,
-            'Con':0,
-            'Int':0,
-            'Wis':0,
-            'Cha':0
+            'Str':1,
+            'Dex':1,
+            'Con':1,
+            'Int':1,
+            'Wis':1,
+            'Cha':1
         }
 
         self.inventory:dict[Item, int] = {
             fists : 1
         }
+
+        self.healthBar = healthBar(self, color='green2')
+        self.manaBar = manaBar(self, color="blue2")
+        self.staminaBar = staminaBar(self, color='green')
+
+        self.bars = [self.healthBar, self.manaBar, self.staminaBar]
 
     def __str__(self) -> str:
         """
@@ -67,7 +69,7 @@ class Entity:
         Returns:
             A string containing basic information about the entity and the item currently equipped in its hand.
         """
-        return f"Name: {self.getInfo('name')}\nClass: {self.getInfo('class')}\nRace: {self.getInfo('race')}\nHand:{self.hand.name}"
+        return f"Name: {self.getInfo('name')}\nClass: {self.getInfo('class')}\nRace: {self.getInfo('race')}\nHand: {self.hand.name}"
 
     def getStatus(self, status:str) -> int:
         """
@@ -119,4 +121,8 @@ class Entity:
             The value of the specified statistic for the entity.
         """
         return self.stats.get(stat, 0)
-    
+
+    def isDead(self) -> bool:
+        if self.status.get('health') == 0:
+            return True
+        return False   

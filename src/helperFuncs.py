@@ -8,4 +8,8 @@ def bannerLines() -> None:
 
 
 def gameHelp() -> None:
-    input("Game Help >> ")
+    clear()
+    bannerLines()
+    print("This is For Game Help")
+    bannerLines()
+    input(">> ")
