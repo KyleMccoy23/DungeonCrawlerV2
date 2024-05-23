@@ -123,6 +123,6 @@ class Entity:
         return self.stats.get(stat, 0)
 
     def isDead(self) -> bool:
-        if self.status.get('health') == 0:
+        if max(self.status.get('health', 0), 0) == 0:
             return True
         return False   

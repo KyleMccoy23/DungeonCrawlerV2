@@ -48,14 +48,10 @@ class PlayerManager:
         self.player.setInfo('name', input("Enter a Name for you character\n# "))
 
         clear()
-        bannerLines()  
-        print(self.player)
 
         self.player.setInfo('class', self.chooseClass())
 
         clear()
-        bannerLines()  
-        print(self.player)
 
         self.player.setInfo('race', self.chooseRace())
         
@@ -86,14 +82,20 @@ class PlayerManager:
             if tempStats < 0:
                 self.player.setStat(s, maxStats)
                 return
+            elif statPoints == 1:
+                tempStats += statPoints
+                clear()
+                continue
             self.player.setStat(s, statPoints)
             maxStats = tempStats
             clear()
 
     def chooseClass(self) -> str:
         while True:
+            bannerLines()
             for n, c in enumerate(classes):
-                print(n+1, c)
+                print(f'{n+1} : {c}')
+            bannerLines()
             selectedClass = input('Enter your class(number)\n# ')
             if selectedClass != '':
                 selectedClass = int(selectedClass)
@@ -104,8 +106,10 @@ class PlayerManager:
 
     def chooseRace(self) -> str:
         while True:
+            bannerLines()
             for n, r in enumerate(races):
-                print(n+1, r)
+                print(f'{n+1} : {r}')
+            bannerLines()
             selectedRace = input('Enter your race(number)\n# ')
             if selectedRace != '':
                 selectedRace = int(selectedRace)
@@ -119,3 +123,4 @@ class PlayerManager:
 
     def savePlayer(self) -> None:
         raise GameError("player saving not implemented")
+    

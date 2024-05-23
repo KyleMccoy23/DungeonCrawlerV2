@@ -10,7 +10,7 @@ class GameError(Exception):
 
         self.logError()
 
-        print("An error has occurred")
+        print(f"An error has occurred : {message}")
 
         exit(1)
 

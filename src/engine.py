@@ -1,5 +1,6 @@
 
 from error import GameError
+from fileManager import FileManager
 from player import Player
 from helperFuncs import clear, bannerLines, gameHelp
 from playerManager import PlayerManager
@@ -16,6 +17,7 @@ class Engine:
         # test
         self.player = Player() #! to remove
         self.playerManager = PlayerManager()
+        self.fileManager = FileManager()
 
         self.menu = False
         self.playing = False
@@ -63,7 +65,8 @@ class Engine:
                 self.playing = True
 
             case '2':
-                self.playerManager.loadPlayer()
+                player = self.fileManager.loadPlayer('Kyle')
+                self.player = player
                 self.menu = False
                 self.playing = True
 
@@ -76,4 +79,7 @@ class Engine:
 
     def play(self) -> None:
         print(self.player)
-        raise GameError("play loop no implemented")
+        self.fileManager.savePlayer(self.player)
+        self.playing = False
+        self.running = False
+        # raise GameError("play loop no implemented")
