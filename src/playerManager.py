@@ -87,7 +87,7 @@ class PlayerManager:
                 clear()
                 continue
             self.player.setStat(s, statPoints)
-            maxStats = tempStats
+            maxStats = tempStats + 1
             clear()
 
     def chooseClass(self) -> str:
@@ -117,10 +117,3 @@ class PlayerManager:
             clear()
         clear()
         return races[selectedRace-1]
-
-    def loadPlayer(self) -> Player:
-        raise GameError('No Player Loading Defined')
-
-    def savePlayer(self) -> None:
-        raise GameError("player saving not implemented")
-    

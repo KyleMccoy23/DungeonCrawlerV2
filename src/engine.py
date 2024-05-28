@@ -14,8 +14,8 @@ class Engine:
 
         This method sets up the initial state of the game engine.
         """
-        # test
-        self.player = Player() #! to remove
+
+        self.player = Player()
         self.playerManager = PlayerManager()
         self.fileManager = FileManager()
 
@@ -80,6 +80,4 @@ class Engine:
     def play(self) -> None:
         print(self.player)
         self.fileManager.savePlayer(self.player)
-        self.playing = False
-        self.running = False
-        # raise GameError("play loop no implemented")
+        raise GameError("End Of Play loop")
