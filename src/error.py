@@ -1,14 +1,17 @@
 from datetime import date
 
 class GameError(Exception):
-    def __init__(self, message: str, function) -> None:
+    def __init__(self, message: str, function, *, run:bool = True) -> None:
+
+        self.filename = str(date.today())
+        self.path = 'data\\logs'
+
+        if run is not True:
+            return
         super().__init__(message)
         self.message = message
 
         self.func = function
-
-        self.filename = str(date.today())
-        self.path = 'data\\logs'
 
         self.logError()
 
@@ -23,3 +26,6 @@ class GameError(Exception):
 
         with open(f'{self.path}\\{self.filename}.txt', 'a') as file:
             file.write(msgToWrite)
+
+    def __str__(self) -> str:
+        return f'An Error method that returns error message and logs the error\n\t* Errors logged in: {self.path}\n\t* Log format: "ERRORTYPE: from FUNCTION | MESSAGE"'

@@ -1,6 +1,11 @@
 from config import *
 from error import GameError
 
+help_lib = {
+    'error':'Shows a discription | log location and log format',
+    'h' : 'shows this page',
+}
+
 def clear() -> None:
     os.system('cls' if os.name == 'nt' else "clear")
 
@@ -15,13 +20,18 @@ def gameHelp() -> None:
         print("This is For Game Help")
         print("For help menu enter 'h'") 
         bannerLines()
-        query = input(">> ")
+        query = input(">> ").lower()
         
         match query:
             case 'q':
                 return
             case 'h':
-                raise GameError("Help menu not implemented", gameHelp)
+                for key in help_lib.keys():
+                    print(f" {key} : {help_lib.get(key)}")
+            case 'error':
+                tmp = GameError('', None, run=False)
+                print(tmp.__str__())
+                del tmp
             case _:
                 continue
-
+        input('>> ')
