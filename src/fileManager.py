@@ -15,7 +15,7 @@ class FileManager():
             p= pickle.load(open(f"{self.MAINPATH}\\{playerName}", 'rb'))
             return p
         except:
-            raise GameError("no player file found")
+            raise GameError("no player file found", self.loadPlayer)
     
     def savePlayer(self, player:Player) -> None:
         try:
@@ -24,4 +24,4 @@ class FileManager():
         except:
             open(f'{self.MAINPATH}\\{player.getInfo('name')}', 'x')
             self.savePlayer(player)
-        raise GameError("player saving has failed")
+        raise GameError("player saving has failed", self.savePlayer)

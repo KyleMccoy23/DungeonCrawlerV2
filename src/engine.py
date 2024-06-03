@@ -9,11 +9,6 @@ from playerManager import PlayerManager
 class Engine:
 
     def __init__(self) -> None:
-        """
-        Initializes the game engine.
-
-        This method sets up the initial state of the game engine.
-        """
 
         self.player = Player()
         self.playerManager = PlayerManager()
@@ -25,10 +20,7 @@ class Engine:
         
 
     def start(self) -> None:
-        """
-        Starts the game.
 
-        """
         print("The game has started \nPress 'enter' or 'return' to start", end=" >>")
         input()
         
@@ -47,6 +39,7 @@ class Engine:
                 self.play()
 
     def mainMenu(self) -> None:
+
         clear()
 
         bannerLines()
@@ -80,4 +73,4 @@ class Engine:
     def play(self) -> None:
         print(self.player)
         self.fileManager.savePlayer(self.player)
-        raise GameError("End Of Play loop")
+        raise GameError("End Of Play loop", self.play)
