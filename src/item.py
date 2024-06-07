@@ -1,10 +1,27 @@
 
 class Item:
+    """
+    This class represents an item in the game.
+
+    Attributes:
+        name (str): The name of the item.
+        value (float): The value of the item.
+        type (str): The type of the item.
+    """
+
     def __init__(self, 
                  name: str, 
                  value: float, 
                  type: str, 
                  ) -> None:
+        """
+        Initializes a new instance of the `Item` class.
+
+        Args:
+            name (str): The name of the item.
+            value (float): The value of the item.
+            type (str): The type of the item.
+        """
         self.name = name
         self.value = value
         self.type = type

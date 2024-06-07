@@ -2,26 +2,26 @@ from healthBar import healthBar, manaBar, staminaBar
 from item import Item, fists
 
 class Entity:
-    """
-    Represents an entity in the game world.
-
-    Attributes:
-        defaultWeapon: The default weapon of the entity.
-        hand: The currently equipped weapon in the entity's hand.
-        info: A dictionary containing information about the entity, such as name, class, race, and status.
-        stats: A dictionary containing the statistics of the entity, such as Strength, Dexterity, etc.
-        inventory: A dictionary mapping Item instances to their quantities in the entity's inventory.
-
-    Methods:
-        __init__: Initializes the entity with default values.
-        __str__: Returns a string representation of the entity.
-        getInfo(info: str) -> str: Retrieves specific information about the entity.
-        getItem(itemName: str) -> int: Retrieves the quantity of a specific item in the entity's inventory.
-        getStat(stat: str) -> int: Retrieves the value of a specific statistic for the entity.  
-        getStatus(status: str, value: int) -> None: Sets the value of a specific status for the entity.
-    """
     def __init__(self) -> None:
+        """
+        Initializes a new instance of the Entity class.
 
+        This method initializes the following instance variables:
+        - `defaultWeapon`: The default weapon of the entity.
+        - `hand`: The currently equipped weapon in the entity's hand.
+        - `info`: A dictionary containing information about the entity, such as name, class, race, and status.
+        - `status`: A dictionary containing the status of the entity, such as health, mana, stamina, and experience.
+        - `stats`: A dictionary containing the statistics of the entity, such as Strength, Dexterity, and Intelligence.
+        - `inventory`: A dictionary mapping Item instances to their quantities in the entity's inventory.
+        - `healthBar`: A healthBar instance representing the health bar of the entity.
+        - `manaBar`: A manaBar instance representing the mana bar of the entity.
+        - `staminaBar`: A staminaBar instance representing the stamina bar of the entity.
+        - `bars`: A list containing the healthBar, manaBar, and staminaBar instances.
+
+        This method does not take any parameters.
+
+        This method does not return anything.
+        """
         self.defaultWeapon = fists
         self.hand = self.defaultWeapon
         
@@ -73,13 +73,13 @@ class Entity:
 
     def getStatus(self, status:str) -> int:
         """
-        Gets the value of a specific status for the entity.
+        Returns the value of a specific status for the entity.
 
         Args:
-            status: The name of the status to set (e.g., 'health', 'mana', 'stamina', etc.).
+            status (str): The name of the status to retrieve.
 
         Returns:
-            The value of the specified status for the entity. If the status is not found, returns 0.
+            int: The value of the specified status. If the status is not found, returns 0.
         """
         return self.status.get(status, 0)
 
@@ -88,10 +88,10 @@ class Entity:
         Retrieves specific information about the entity.
 
         Args:
-            info: The type of information to retrieve (e.g., 'name', 'class', 'race', 'status').
+            info (str): The type of information to retrieve (e.g., 'name', 'class', 'race', 'status').
 
         Returns:
-            The requested information about the entity.
+            str: The requested information about the entity. If the information is not found, returns an empty string.
         """
         return self.info.get(info, '')
     
@@ -100,10 +100,10 @@ class Entity:
         Retrieves the quantity of a specific item in the entity's inventory.
 
         Args:
-            itemName: The name of the item to retrieve.
+            itemName (str): The name of the item to retrieve.
 
         Returns:
-            The quantity of the specified item in the entity's inventory. If item is not found, returns 0.
+            int: The quantity of the specified item in the entity's inventory. If item is not found, returns 0.
         """
         for i in self.inventory:
             if i.name == itemName:
@@ -115,14 +115,20 @@ class Entity:
         Retrieves the value of a specific statistic for the entity.
 
         Args:
-            stat: The name of the statistic to retrieve (e.g., 'Str', 'Dex', 'Con', etc.).
+            stat (str): The name of the statistic to retrieve (e.g., 'Str', 'Dex', 'Con', etc.).
 
         Returns:
-            The value of the specified statistic for the entity.
+            int: The value of the specified statistic for the entity. If the statistic is not found, returns 0.
         """
         return self.stats.get(stat, 0)
 
     def isDead(self) -> bool:
+        """
+        Check if the entity is dead by checking if its health status is 0 or less.
+
+        Returns:
+            bool: True if the entity's health status is 0 or less, False otherwise.
+        """
         if max(self.status.get('health', 0), 0) == 0:
             return True
         return False   
