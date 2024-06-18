@@ -1,4 +1,4 @@
-from config import *
+import os
 from error import GameError
 
 help_lib = {

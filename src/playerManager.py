@@ -60,9 +60,19 @@ class PlayerManager:
         self.setStats()
 
         bannerLines()
+
+        self.updateBars()
+        self.updatePlayerinfo()
     
         return self.player
     
+    def updatePlayerinfo(self) -> None:
+        self.player.setStatus('health', 0) #TODO:  Add formula to calculate health later
+
+    def updateBars(self) -> None:
+        for bar in self.player.bars:
+            bar.updateMax()
+        
     def setStats(self) -> None:
         maxStats = 14
         for s in self.player.stats:

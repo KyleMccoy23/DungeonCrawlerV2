@@ -69,7 +69,7 @@ class Entity:
         Returns:
             A string containing basic information about the entity and the item currently equipped in its hand.
         """
-        return f"Name: {self.getInfo('name')}\nClass: {self.getInfo('class')}\nRace: {self.getInfo('race')}\nHand: {self.hand.name}"
+        return f"Name: {self.getInfo('name')}\nClass: {self.getInfo('class')}\nRace: {self.getInfo('race')}\nHand: {self.hand.name}\nHealth: {self.getStatus('health')}/{self.getStatus('maxHealth')}\nMana: {self.getStatus('mana')}/{self.getStatus('maxMana')}\nStamina: {self.getStatus('stamina')}/{self.getStatus('maxStamina')}"
 
     def getStatus(self, status:str) -> int:
         """
@@ -121,6 +121,20 @@ class Entity:
             int: The value of the specified statistic for the entity. If the statistic is not found, returns 0.
         """
         return self.stats.get(stat, 0)
+
+    def setStatus(self, status:str, value:int) -> None:
+        self.status[status] = value
+
+    def setInfo(self, info:str, value:str) -> None:
+        self.info[info] = value
+    
+    def setStat(self, stat:str, value:int) -> None:
+        self.stats[stat] = value
+
+    def attack(self, target) -> None:
+        target.status['health'] -= self.hand.damage
+        target.status['health'] = max(target.status.get('health',0), 0)
+        target.healthBar.update()
 
     def isDead(self) -> bool:
         """

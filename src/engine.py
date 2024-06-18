@@ -78,7 +78,7 @@ class Engine:
                 self.playing = True
 
             case '2':
-                player = self.fileManager.loadPlayer('Kyle')
+                player = self.fileManager.loadPlayer('test')
                 self.player = player
                 self.menu = False
                 self.playing = True
@@ -93,4 +93,6 @@ class Engine:
     def play(self) -> None:
         print(self.player)
         self.fileManager.savePlayer(self.player)
+        for bar in self.player.bars:
+            bar.draw()
         raise GameError("End Of Play loop", self.play)
