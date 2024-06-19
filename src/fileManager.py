@@ -1,4 +1,7 @@
 
+from genericpath import isfile
+from ntpath import join
+from os import listdir
 from error import GameError
 import pickle
 
@@ -23,3 +26,6 @@ class FileManager():
             open(f'{self.MAINPATH}\\{player.getInfo('name')}', 'x')
             self.savePlayer(player)
         raise GameError("player saving has failed", self.savePlayer)
+
+    def getSaveNames(self) -> list:
+        return [f for f in listdir(self.MAINPATH) if isfile(join(self.MAINPATH, f))]

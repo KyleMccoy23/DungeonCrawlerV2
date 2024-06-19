@@ -40,7 +40,8 @@ class Entity:
             'maxMana':0,
             'maxStamina':0,
             'exp':0,
-            'level':0,
+            'maxExp':0,
+            'level':1,
         }
 
         self.stats: dict[str, int] = {

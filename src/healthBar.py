@@ -68,6 +68,7 @@ class healthBar(Bar):
 
     def updateMax(self) -> None:
         self.current_value = self.entity.status.get('maxHealth')
+        self.max_value = self.current_value
 
 class manaBar(Bar):
     def __init__(self, 
@@ -88,6 +89,7 @@ class manaBar(Bar):
     
     def updateMax(self) -> None:
         self.current_value = self.entity.status.get('maxMana')
+        self.max_value = self.current_value
 
 class staminaBar(Bar):
     def __init__(self, 
@@ -108,3 +110,4 @@ class staminaBar(Bar):
 
     def updateMax(self) -> None:
         self.current_value = self.entity.status.get('maxStamina')
+        self.max_value = self.current_value

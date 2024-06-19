@@ -78,7 +78,11 @@ class Engine:
                 self.playing = True
 
             case '2':
-                player = self.fileManager.loadPlayer('test')
+                saves = self.fileManager.getSaveNames()
+                for i, name in enumerate(saves):
+                    print(f'{i+1} : {name}')
+                save:int = int(input('# '))
+                player = self.fileManager.loadPlayer(saves[(save-1)])
                 self.player = player
                 self.menu = False
                 self.playing = True
