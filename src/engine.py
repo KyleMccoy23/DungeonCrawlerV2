@@ -1,32 +1,18 @@
 
 from error import GameError
-from fileManager import FileManager
+from managers import EventManager, PlayerManager, FileManager
 from player import Player
 from helperFuncs import clear, bannerLines, gameHelp
-from playerManager import PlayerManager
 
 
 class Engine:
 
     def __init__(self) -> None:
-        """
-        Initializes a new instance of the `Engine` class.
 
-        This method initializes the following instance variables:
-        - `player`: An instance of the `Player` class.
-        - `playerManager`: An instance of the `PlayerManager` class.
-        - `fileManager`: An instance of the `FileManager` class.
-        - `menu`: A boolean variable set to `False`.
-        - `playing`: A boolean variable set to `False`.
-        - `running`: A boolean variable set to `False`.
-
-        This method does not take any parameters.
-
-        This method does not return anything.
-        """
         self.player = Player()
         self.playerManager = PlayerManager()
         self.fileManager = FileManager()
+        self.eventManager = EventManager() 
 
         self.menu = False
         self.playing = False
@@ -84,6 +70,11 @@ class Engine:
                 save:int = int(input('# '))
                 player = self.fileManager.loadPlayer(saves[(save-1)])
                 self.player = player
+                print(self.player)
+                self.fileManager.savePlayer(self.player)
+                for bar in self.player.bars:
+                    bar.draw()
+                input(">> ")
                 self.menu = False
                 self.playing = True
 
@@ -95,8 +86,5 @@ class Engine:
                 exit(0)
 
     def play(self) -> None:
-        print(self.player)
-        self.fileManager.savePlayer(self.player)
-        for bar in self.player.bars:
-            bar.draw()
-        raise GameError("End Of Play loop", self.play)
+        pass
+

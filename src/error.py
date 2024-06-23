@@ -1,7 +1,7 @@
 from datetime import date
 
 class GameError(Exception):
-    def __init__(self, message: str, function, *, run:bool = True) -> None:
+    def __init__(self, message: str, function = None, run:bool = True) -> None:
 
         self.filename = str(date.today())
         self.path = 'data\\logs'
