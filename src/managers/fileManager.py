@@ -20,10 +20,10 @@ class FileManager():
     
     def savePlayer(self, player) -> None:
         try:
-            pickle.dump(player, open(f'{self.MAINPATH}\\{player.getInfo('name')}', 'wb'))
+            pickle.dump(player, open(self.MAINPATH+'\\'+player.getInfo('name'), 'wb'))
             return
         except:
-            open(f'{self.MAINPATH}\\{player.getInfo('name')}', 'x')
+            open(self.MAINPATH+'\\'+player.getInfo('name'), 'x')
             self.savePlayer(player)
         raise GameError("player saving has failed", self.savePlayer)
 

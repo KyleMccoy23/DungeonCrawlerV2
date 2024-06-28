@@ -4,11 +4,12 @@
 class EventManager:
 
     def __init__(self) -> None:
-        pass
+        self.lastEvent = 'init'
 
-    def getEvent(self) -> str:
-        return "test"
+    def getLastEvent(self) -> str:
+        return self.lastEvent
     
     def playerMove(self, player) -> tuple[int,int]:
-        cords = (0, 0)
-        return (0, 0)
+        cords = player.location.get('cords')
+        self.lastEvent = 'playerMove'
+        return cords

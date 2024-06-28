@@ -1,6 +1,6 @@
 
 from error import GameError
-from managers import EventManager, PlayerManager, FileManager
+from managers import EventManager, PlayerManager, FileManager, MapManager
 from player import Player
 from helperFuncs import clear, bannerLines, gameHelp
 
@@ -13,6 +13,7 @@ class Engine:
         self.playerManager = PlayerManager()
         self.fileManager = FileManager()
         self.eventManager = EventManager() 
+        self.mapManager = MapManager()
 
         self.menu = False
         self.playing = False
@@ -86,5 +87,13 @@ class Engine:
                 exit(0)
 
     def play(self) -> None:
-        pass
+        self.mapManager.draw((3,5))
+        return
 
+def main() -> None:
+    e=Engine()
+    e.play()
+
+
+if __name__ == "__main__":
+    main()
