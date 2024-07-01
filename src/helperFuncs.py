@@ -12,6 +12,9 @@ def clear() -> None:
 def bannerLines() -> None:
     print('Xx---------------------xX')
 
+def mapLines() -> None:
+    print('Xx------------xX')
+
 
 def gameHelp() -> None:
     while True:

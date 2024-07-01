@@ -87,11 +87,14 @@ class Engine:
                 exit(0)
 
     def play(self) -> None:
-        self.mapManager.draw((3,5))
+        self.mapManager.draw(self.player.location.get('cords', 0))
+        move = str(input('Where do you want to move # ').lower().strip())
+        self.eventManager.playerMove(move, self.player.location.get('cords', 0))
         return
 
 def main() -> None:
     e=Engine()
+    e.player = e.fileManager.loadPlayer('test')
     e.play()
 
 
