@@ -1,6 +1,6 @@
 
 from error import GameError
-from managers import EventManager, PlayerManager, FileManager, MapManager
+from managers import EventManager, PlayerManager, FileManager
 from player import Player
 from helperFuncs import clear, bannerLines, gameHelp
 
@@ -13,7 +13,6 @@ class Engine:
         self.playerManager = PlayerManager()
         self.fileManager = FileManager()
         self.eventManager = EventManager() 
-        self.mapManager = MapManager()
 
         self.menu = False
         self.playing = False
@@ -87,9 +86,6 @@ class Engine:
                 exit(0)
 
     def play(self) -> None:
-        self.mapManager.draw(self.player.location.get('cords', 0))
-        move = str(input('Where do you want to move # ').lower().strip())
-        self.eventManager.playerMove(move, self.player.location.get('cords', 0))
         return
 
 def main() -> None:

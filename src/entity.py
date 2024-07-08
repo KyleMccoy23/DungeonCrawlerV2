@@ -24,11 +24,6 @@ class Entity:
         """
         self.defaultWeapon = fists
         self.hand = self.defaultWeapon
-
-        self.location:dict = {
-            'map':'forest',
-            'cords':(0,0)
-        }
         
         self.info:dict[str, str] = {
             'name':'',
