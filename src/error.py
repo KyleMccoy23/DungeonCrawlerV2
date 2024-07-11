@@ -8,7 +8,7 @@ class GameError(Exception):
 
         if run is not True:
             return
-        
+
         super().__init__(message)
         self.message = message
 

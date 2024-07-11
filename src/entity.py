@@ -24,7 +24,7 @@ class Entity:
         """
         self.defaultWeapon = fists
         self.hand = self.defaultWeapon
-        
+
         self.info:dict[str, str] = {
             'name':'',
             'class':'',
@@ -95,7 +95,7 @@ class Entity:
             str: The requested information about the entity. If the information is not found, returns an empty string.
         """
         return self.info.get(info, '')
-    
+
     def getItem(self, itemName) -> int:
         """
         Retrieves the quantity of a specific item in the entity's inventory.
@@ -110,7 +110,7 @@ class Entity:
             if i.name == itemName:
                 return self.inventory.get(i, 0)
         return 0
-    
+
     def getStat(self, stat:str) -> int:
         """
         Retrieves the value of a specific statistic for the entity.
@@ -128,7 +128,7 @@ class Entity:
 
     def setInfo(self, info:str, value:str) -> None:
         self.info[info] = value
-    
+
     def setStat(self, stat:str, value:int) -> None:
         self.stats[stat] = value
 
@@ -146,4 +146,4 @@ class Entity:
         """
         if max(self.status.get('health', 0), 0) == 0:
             return True
-        return False   
+        return False

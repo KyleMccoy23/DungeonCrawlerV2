@@ -12,12 +12,12 @@ class Engine:
         self.player = Player()
         self.playerManager = PlayerManager()
         self.fileManager = FileManager()
-        self.eventManager = EventManager() 
+        self.eventManager = EventManager()
 
         self.menu = False
         self.playing = False
         self.running = False
-        
+
 
     def start(self) -> None:
         """
@@ -29,13 +29,13 @@ class Engine:
         """
         print("The game has started \nPress 'enter' or 'return' to start", end=" >>")
         input()
-        
+
         self.running = True
         self.menu = True
 
 
     def run(self) -> None:
-        
+
         while self.running:
 
             while self.menu:
@@ -81,7 +81,7 @@ class Engine:
             case '3':
                 gameHelp()
                 self.menu = True
-            
+
             case '4':
                 exit(0)
 

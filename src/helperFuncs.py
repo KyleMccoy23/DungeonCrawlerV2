@@ -18,10 +18,10 @@ def gameHelp() -> None:
         clear()
         bannerLines()
         print("This is For Game Help")
-        print("For help menu enter 'h'") 
+        print("For help menu enter 'h'")
         bannerLines()
         query = input(">> ").lower()
-        
+
         match query:
             case 'q':
                 return

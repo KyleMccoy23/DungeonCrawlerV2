@@ -8,7 +8,7 @@ import pickle
 class FileManager():
 
     def __init__(self) -> None:
-        
+
         self.MAINPATH = 'data\\saves'
 
     def loadPlayer(self, playerName:str = ''):
@@ -17,7 +17,7 @@ class FileManager():
             return p
         except:
             raise GameError("no player file found", self.loadPlayer)
-    
+
     def savePlayer(self, player) -> None:
         try:
             pickle.dump(player, open(self.MAINPATH+'\\'+player.getInfo('name'), 'wb'))

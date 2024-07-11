@@ -1,6 +1,5 @@
 
 from error import GameError
-from healthBar import healthBar, manaBar, staminaBar
 from helperFuncs import clear, bannerLines
 from player import Player
 
@@ -35,15 +34,12 @@ races: list[str] = [
 
 class PlayerManager:
 
-    def __init__(self) -> None:
-        pass
-
     def newPlayer(self) -> Player:
 
         self.player = Player()
 
         clear()
-        bannerLines()        
+        bannerLines()
 
         self.player.setInfo('name', input("Enter a Name for you character\n# "))
 
@@ -91,8 +87,7 @@ class PlayerManager:
             bannerLines()
             statPoints = input(f"{s} : ")
             if statPoints == '': statPoints = 1
-            elif statPoints == 'q': exit(0)
-            else: statPoints = int(statPoints)
+            statPoints = int(statPoints)
             tempStats -= statPoints
             if tempStats < 0:
                 self.player.setStat(s, maxStats)
@@ -106,13 +101,15 @@ class PlayerManager:
             clear()
 
     def chooseClass(self) -> str:
+        def printclass() -> None:
+            bannerLines()
+            for number, _class in enumerate(classes):
+                print(f'{number+1} : {_class}')
+            bannerLines()
         while True:
-            bannerLines()
-            for n, c in enumerate(classes):
-                print(f'{n+1} : {c}')
-            bannerLines()
+            printclass()
             selectedClass = input('Enter your class(number)\n# ')
-            if selectedClass != '':
+            if selectedClass.isnumeric():
                 selectedClass = int(selectedClass)
                 break
             clear()
@@ -120,13 +117,15 @@ class PlayerManager:
         return classes[selectedClass-1]
 
     def chooseRace(self) -> str:
+        def printrace() -> None:
+            bannerLines()
+            for number, race in enumerate(races):
+                print(f'{number+1} : {race}')
+            bannerLines()
         while True:
-            bannerLines()
-            for n, r in enumerate(races):
-                print(f'{n+1} : {r}')
-            bannerLines()
+            printrace()
             selectedRace = input('Enter your race(number)\n# ')
-            if selectedRace != '':
+            if selectedRace.isnumeric():
                 selectedRace = int(selectedRace)
                 break
             clear()
