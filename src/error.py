@@ -1,7 +1,8 @@
 from datetime import date
+from typing import Any, Optional
 
 class GameError(Exception):
-    def __init__(self, message: str, function = None, run:bool = True) -> None:
+    def __init__(self, message: str, function:Optional[Any], run:bool = True) -> None:
 
         self.filename = str(date.today())
         self.path = 'data\\logs'
@@ -30,3 +31,4 @@ class GameError(Exception):
 
     def __str__(self) -> str:
         return f'An Error method that returns error message and logs the error\n\t* Errors logged in: {self.path}\n\t* Log format: "ERRORTYPE: from FUNCTION | MESSAGE"'
+    

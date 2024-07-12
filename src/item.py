@@ -1,4 +1,7 @@
 
+from typing import Optional
+
+
 class Item:
     """
     This class represents an item in the game.
@@ -48,7 +51,7 @@ class SpecialWeapon(Weapon):
                  weaponType: str, 
                  damage: int, 
                  value: int,
-                 *attributes) -> None:
+                 attributes:Optional[list]) -> None:
         super().__init__(name, 
                          weaponType, 
                          damage, 
@@ -86,8 +89,8 @@ excaliber = SpecialWeapon("Excaliber",
                           "Sword",
                           999,
                           9999999,
-                          "UBBRAKABLE",
-                          "HOLY")
+                          ["UNBRAKABLE",
+                          "HOLY"])
 
 iron = Item(name="Iron",
             value=2,

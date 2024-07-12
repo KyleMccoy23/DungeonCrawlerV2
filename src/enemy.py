@@ -1,5 +1,4 @@
 
-from http.client import UnimplementedFileMode
 from player import Player
 
 class Enemy(Player):
