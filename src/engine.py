@@ -1,7 +1,7 @@
 
 from error import GameError
 from managers import EventManager, PlayerManager, FileManager
-from player import Player
+from entitys import Player
 from helperFuncs import clear, bannerLines, gameHelp
 
 
@@ -86,6 +86,7 @@ class Engine:
                 exit(0)
 
     def play(self) -> None:
+        print('Play')
         return
 
 def main() -> None:

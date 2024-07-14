@@ -1,7 +1,7 @@
 
 from error import GameError
 from helperFuncs import clear, bannerLines
-from player import Player
+from entitys import Player
 
 classes: list[str] = [
     "Fighter", 
